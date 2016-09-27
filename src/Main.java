@@ -37,6 +37,7 @@ public class Main {
                 		player.getName(), player.getBalance(), player.getLimit()));
 
                 int turn = 0;
+                
                 while (player.balanceExceedsLimitBy(bet) && player.getBalance() < 200)
                 {
                     turn++;                    
@@ -63,7 +64,7 @@ public class Main {
                     }
                     
                 } //while
-
+                int testBalance = player.getBalance();
                 System.out.print(String.format("%d turns later.\nEnd Game %d: ", turn, i));
                 System.out.println(String.format("%s now has balance %d\n", player.getName(), player.getBalance()));
                 
