@@ -32,6 +32,7 @@ public class Game {
 		player.takeBet(bet);
 		    
 		int matches = 0;
+                
 		for ( Dice d : dice) {
 			d.roll();
 			if (d.getValue().equals(pick)) { 
@@ -39,10 +40,10 @@ public class Game {
 			}
 		}
 		
-		int winnings = matches * bet;
+		int winnings = (matches * bet);
 
 		if (matches > 0) {			
-			player.receiveWinnings(winnings);
+			player.receiveWinnings(winnings + bet);
 		}
         return winnings;		
 	}
