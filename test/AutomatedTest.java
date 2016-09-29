@@ -93,5 +93,15 @@ public class AutomatedTest {
         assertTrue(nonRandom < 59);
         
     }
+    @Test
+    public void testOddsError() {
+        int spadeCount = 0;
+        for(int i = 0; i < 200; i++){
+            if(DiceValue.getRandom() == DiceValue.SPADE){
+                spadeCount++;
+            }
+        }
+        assertTrue(spadeCount>1);
+    }
     
 }
