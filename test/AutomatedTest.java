@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -59,6 +60,36 @@ public class AutomatedTest {
         Game sut_ = new Game(dice1, dice2, dice3);
         sut_.playRound(player, DiceValue.CROWN, 5);
         assertTrue(player.getBalance() == 115);
+    }
+    
+     @Test
+    public void testNonRandomDiceError() {
+        Player player = new Player("fred", 100);
+        player.setLimit(0);
+        int bet = 5;
+        Dice d1 = new Dice();
+        Dice d2 = new Dice();
+        Dice d3 = new Dice();
+        Game game = new Game(d1, d2, d3);
+        DiceValue dice1InitValue = d1.getValue();
+        DiceValue dice2InitValue = d2.getValue();
+        DiceValue dice3InitValue = d3.getValue();
+        int nonRandom = 0;
+        for(int i = 0; i < 20; i++){
+            game.playRound(player, DiceValue.CROWN, 5);
+            List <DiceValue> results = game.getDiceValues();
+            if(dice1InitValue == results.get(0)){
+                nonRandom++;
+            }
+            if(dice2InitValue == results.get(1)){
+                nonRandom++;
+            }
+            if(dice3InitValue == results.get(2)){
+                nonRandom++;
+            }
+        }
+        assertTrue(nonRandom < 35);
+        
     }
     
 }
